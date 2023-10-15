@@ -1,16 +1,23 @@
+// ********** Buffer *********
+const buffer = new Buffer.from("RitikTailor");
+buffer.write("TailorRitik");
+console.log(buffer.toString());
+console.log(buffer);
+console.log(buffer.toJSON());
+// ***************************
 // ********** Custom emitter *********
-const PizzaShop = require("./pizza-shop");
-const DrinkMachine = require("./drink-machine");
-const Pizza = new PizzaShop();
-const Drink = new DrinkMachine();
-Pizza.on("order", (size, topping) => {
-  console.log(
-    `Order received!! Baking a ${size} pizza with topping ${topping}`
-  );
-  Drink.servingDrink(size);
-});
-Pizza.order("large", "mushroom");
-Pizza.displayOrderNumber();
+// const PizzaShop = require("./pizza-shop");
+// const DrinkMachine = require("./drink-machine");
+// const Pizza = new PizzaShop();
+// const Drink = new DrinkMachine();
+// Pizza.on("order", (size, topping) => {
+//   console.log(
+//     `Order received!! Baking a ${size} pizza with topping ${topping}`
+//   );
+//   Drink.servingDrink(size);
+// });
+// Pizza.order("large", "mushroom");
+// Pizza.displayOrderNumber();
 // ***********************************
 // ********** Event Module *********
 // const EventEmitter = require("node:events");
