@@ -1,21 +1,35 @@
-// ********** Event Module *********
-const EventEmitter = require("node:events");
-
-const emitter = new EventEmitter();
-
-emitter.on("order-pizza", (size, topping) => {
+// ********** Custom emitter *********
+const PizzaShop = require("./pizza-shop");
+const DrinkMachine = require("./drink-machine");
+const Pizza = new PizzaShop();
+const Drink = new DrinkMachine();
+Pizza.on("order", (size, topping) => {
   console.log(
     `Order received!! Baking a ${size} pizza with topping ${topping}`
   );
+  Drink.servingDrink(size);
 });
+Pizza.order("large", "mushroom");
+Pizza.displayOrderNumber();
+// ***********************************
+// ********** Event Module *********
+// const EventEmitter = require("node:events");
 
-emitter.on("order-pizza", (size) => {
-  if (size === "large") {
-    console.log(`Order received!! Baking a pizza`);
-  }
-});
+// const emitter = new EventEmitter();
 
-emitter.emit("order-pizza", "large", "mushroom");
+// emitter.on("order-pizza", (size, topping) => {
+//   console.log(
+//     `Order received!! Baking a ${size} pizza with topping ${topping}`
+//   );
+// });
+
+// emitter.on("order-pizza", (size) => {
+//   if (size === "large") {
+//     console.log(`Order received!! Baking a pizza`);
+//   }
+// });
+
+// emitter.emit("order-pizza", "large", "mushroom");
 // ***********************************
 // ********** Callback Patterns **********
 // function greet(name) {
