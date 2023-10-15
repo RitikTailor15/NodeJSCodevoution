@@ -1,8 +1,11 @@
-const math = require("./math");
-const { add, subtract } = math;
+const data = require("./data.json");
+console.log(data, data.name, "data from JSON");
+console.log("After watch mode");
+// const math = require("./math");
+// const { add, subtract } = math;
 
-console.log(add(1, 4));
-console.log(subtract(1, 4));
+// console.log(add(1, 4));
+// console.log(subtract(1, 4));
 // const superHero = require("./super-hero");
 // console.log(superHero.getName());
 // superHero.setName("SuperMan");
