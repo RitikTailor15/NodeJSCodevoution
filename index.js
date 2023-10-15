@@ -1,9 +1,31 @@
+// ********** fs module *********
+const fs = require("node:fs");
+const fileContent = fs.readFileSync("./file.txt", "utf-8");
+console.log(fileContent, "file content");
+
+fs.readFile("./file.txt", "utf-8", (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+});
+
+fs.writeFileSync("./greet.txt", "Hello world!!");
+fs.writeFile("./greet.txt", " Hello from Ritik!!", { flag: "a" }, (error) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("File written success");
+  }
+});
+// ******************************
 // ********** Buffer *********
-const buffer = new Buffer.from("RitikTailor");
-buffer.write("TailorRitik");
-console.log(buffer.toString());
-console.log(buffer);
-console.log(buffer.toJSON());
+// const buffer = new Buffer.from("RitikTailor");
+// buffer.write("TailorRitik");
+// console.log(buffer.toString());
+// console.log(buffer);
+// console.log(buffer.toJSON());
 // ***************************
 // ********** Custom emitter *********
 // const PizzaShop = require("./pizza-shop");
