@@ -1,6 +1,30 @@
-const data = require("./data.json");
-console.log(data, data.name, "data from JSON");
-console.log("After watch mode");
+const path = require("node:path");
+console.log(__filename);
+console.log(__dirname);
+
+console.log(path.basename(__filename));
+console.log(path.basename(__dirname));
+
+console.log(path.extname(__filename));
+console.log(path.extname(__dirname));
+
+console.log(path.parse(__filename));
+
+console.log(path.format(path.parse(__filename)));
+
+console.log(path.isAbsolute(__filename));
+console.log(path.isAbsolute("./data.json"));
+
+console.log(path.join("folder1", "folder2", "index.html"));
+
+console.log(path.resolve("folder1", "folder2", "index.html")); // folder1/folder1/index.html
+console.log(path.resolve("folder1", "//folder2", "index.html")); // folder1/folder1/index.html
+console.log(path.resolve("folder1", "//folder2", "../index.html"));
+console.log(path.resolve(__dirname, "data.json"));
+
+// const data = require("./data.json");
+// console.log(data, data.name, "data from JSON");
+// console.log("After watch mode");
 // const math = require("./math");
 // const { add, subtract } = math;
 
