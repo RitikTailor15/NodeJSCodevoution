@@ -1,26 +1,59 @@
-const path = require("node:path");
-console.log(__filename);
-console.log(__dirname);
+// ********** Event Module *********
+const EventEmitter = require("node:events");
 
-console.log(path.basename(__filename));
-console.log(path.basename(__dirname));
+const emitter = new EventEmitter();
 
-console.log(path.extname(__filename));
-console.log(path.extname(__dirname));
+emitter.on("order-pizza", (size, topping) => {
+  console.log(
+    `Order received!! Baking a ${size} pizza with topping ${topping}`
+  );
+});
 
-console.log(path.parse(__filename));
+emitter.on("order-pizza", (size) => {
+  if (size === "large") {
+    console.log(`Order received!! Baking a pizza`);
+  }
+});
 
-console.log(path.format(path.parse(__filename)));
+emitter.emit("order-pizza", "large", "mushroom");
+// ***********************************
+// ********** Callback Patterns **********
+// function greet(name) {
+//   return `Hello ${name}`;
+// }
 
-console.log(path.isAbsolute(__filename));
-console.log(path.isAbsolute("./data.json"));
+// function higherOrderFunction(callback) {
+//   const name = "Ritik";
+//   return callback(name);
+// }
+// console.log(higherOrderFunction(greet));
+// ****************************************
 
-console.log(path.join("folder1", "folder2", "index.html"));
+// ********** Path Module **********
+// const path = require("node:path");
+// console.log(__filename);
+// console.log(__dirname);
 
-console.log(path.resolve("folder1", "folder2", "index.html")); // folder1/folder1/index.html
-console.log(path.resolve("folder1", "//folder2", "index.html")); // folder1/folder1/index.html
-console.log(path.resolve("folder1", "//folder2", "../index.html"));
-console.log(path.resolve(__dirname, "data.json"));
+// console.log(path.basename(__filename));
+// console.log(path.basename(__dirname));
+
+// console.log(path.extname(__filename));
+// console.log(path.extname(__dirname));
+
+// console.log(path.parse(__filename));
+
+// console.log(path.format(path.parse(__filename)));
+
+// console.log(path.isAbsolute(__filename));
+// console.log(path.isAbsolute("./data.json"));
+
+// console.log(path.join("folder1", "folder2", "index.html"));
+
+// console.log(path.resolve("folder1", "folder2", "index.html")); // folder1/folder1/index.html
+// console.log(path.resolve("folder1", "//folder2", "index.html")); // folder1/folder1/index.html
+// console.log(path.resolve("folder1", "//folder2", "../index.html"));
+// console.log(path.resolve(__dirname, "data.json"));
+// ******************************************
 
 // const data = require("./data.json");
 // console.log(data, data.name, "data from JSON");
