@@ -1,19 +1,33 @@
+// ********** stream *********
+const fs = require("node:fs");
+
+const readableStream = fs.createReadStream("./file.txt", {
+  encoding: "utf-8",
+  highWaterMark: 2,
+});
+
+const writeableStream = fs.createWriteStream("./file2.txt");
+readableStream.on("data", (chunk) => {
+  console.log(chunk);
+  writeableStream.write(chunk);
+});
+// ***************************
 // ********** fs promises module *********
-const fs = require("node:fs/promises");
+// const fs = require("node:fs/promises");
 
-async function readFile() {
-  try {
-    const data = await fs.readFile("./file.txt", "utf-8");
-    console.log(data, "from async function");
-  } catch (error) {
-    console.log(error);
-  }
-}
-readFile();
+// async function readFile() {
+//   try {
+//     const data = await fs.readFile("./file.txt", "utf-8");
+//     console.log(data, "from async function");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// readFile();
 
-fs.readFile("./file.txt", "utf-8")
-  .then((data) => console.log(data, "data from file"))
-  .catch((error) => console.log(error));
+// fs.readFile("./file.txt", "utf-8")
+//   .then((data) => console.log(data, "data from file"))
+//   .catch((error) => console.log(error));
 // ***************************************
 // ********** fs module *********
 // const fs = require("node:fs");
