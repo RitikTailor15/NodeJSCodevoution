@@ -1,24 +1,41 @@
+// ********** fs promises module *********
+const fs = require("node:fs/promises");
+
+async function readFile() {
+  try {
+    const data = await fs.readFile("./file.txt", "utf-8");
+    console.log(data, "from async function");
+  } catch (error) {
+    console.log(error);
+  }
+}
+readFile();
+
+fs.readFile("./file.txt", "utf-8")
+  .then((data) => console.log(data, "data from file"))
+  .catch((error) => console.log(error));
+// ***************************************
 // ********** fs module *********
-const fs = require("node:fs");
-const fileContent = fs.readFileSync("./file.txt", "utf-8");
-console.log(fileContent, "file content");
+// const fs = require("node:fs");
+// const fileContent = fs.readFileSync("./file.txt", "utf-8");
+// console.log(fileContent, "file content");
 
-fs.readFile("./file.txt", "utf-8", (error, data) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(data);
-  }
-});
+// fs.readFile("./file.txt", "utf-8", (error, data) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log(data);
+//   }
+// });
 
-fs.writeFileSync("./greet.txt", "Hello world!!");
-fs.writeFile("./greet.txt", " Hello from Ritik!!", { flag: "a" }, (error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("File written success");
-  }
-});
+// fs.writeFileSync("./greet.txt", "Hello world!!");
+// fs.writeFile("./greet.txt", " Hello from Ritik!!", { flag: "a" }, (error) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("File written success");
+//   }
+// });
 // ******************************
 // ********** Buffer *********
 // const buffer = new Buffer.from("RitikTailor");
