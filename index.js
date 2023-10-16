@@ -1,16 +1,29 @@
+// ************* create a server ***************
+const http = require("node:http");
+
+const server = http.createServer((req, res) => {
+  console.log(req, "req");
+  res.writeHead(200, { "Content-type": "text/plain" });
+  res.end("Hello world");
+});
+
+server.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+// **********************************************
 // ********** stream *********
-const fs = require("node:fs");
+// const fs = require("node:fs");
 
-const readableStream = fs.createReadStream("./file.txt", {
-  encoding: "utf-8",
-  highWaterMark: 2,
-});
+// const readableStream = fs.createReadStream("./file.txt", {
+//   encoding: "utf-8",
+//   highWaterMark: 2,
+// });
 
-const writeableStream = fs.createWriteStream("./file2.txt");
-readableStream.on("data", (chunk) => {
-  console.log(chunk);
-  writeableStream.write(chunk);
-});
+// const writeableStream = fs.createWriteStream("./file2.txt");
+// readableStream.on("data", (chunk) => {
+//   console.log(chunk);
+//   writeableStream.write(chunk);
+// });
 // ***************************
 // ********** fs promises module *********
 // const fs = require("node:fs/promises");
