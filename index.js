@@ -1,18 +1,43 @@
-// ************* create a server ***************
+// ************* HTTP routing ***************
 const http = require("node:http");
 const fs = require("node:fs");
 
 const server = http.createServer((req, res) => {
-  const name = "Ritik Tailor";
-  res.writeHead(200, { "Content-type": "text/html" });
-  let html = fs.readFileSync("./index.html", "utf-8");
-  html = html.replace("{{name}}", name);
-  res.end(html);
+  // req.method (GET | POST | PUT | DELETE)
+  if (req.url === "/") {
+    res.writeHead(200, { "Content-type": "text/plain" });
+    res.end("Home Page");
+  } else if (req.url === "/about") {
+    res.writeHead(200, { "Content-type": "text/plain" });
+    res.end("ABout Page");
+  } else if (req.url === "/api") {
+    res.writeHead(200, { "Content-type": "application/json" });
+    res.end(JSON.stringify({ firstName: "Ritik", lastName: "Tailor" }));
+  } else {
+    res.writeHead(404, { "Content-type": "text/plain" });
+    res.end("Page not found");
+  }
 });
 
 server.listen(3000, () => {
   console.log("Server running on port 3000");
 });
+// ********************************************
+// ************* create a server ***************
+// const http = require("node:http");
+// const fs = require("node:fs");
+
+// const server = http.createServer((req, res) => {
+//   const name = "Ritik Tailor";
+//   res.writeHead(200, { "Content-type": "text/html" });
+//   let html = fs.readFileSync("./index.html", "utf-8");
+//   html = html.replace("{{name}}", name);
+//   res.end(html);
+// });
+
+// server.listen(3000, () => {
+//   console.log("Server running on port 3000");
+// });
 // **********************************************
 // ********** stream *********
 // const fs = require("node:fs");
