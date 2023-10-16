@@ -1,13 +1,12 @@
 // ************* create a server ***************
 const http = require("node:http");
+const fs = require("node:fs");
 
 const server = http.createServer((req, res) => {
-  const superHero = {
-    firstName: "Ritik",
-    lastName: "Tailor",
-  };
-  res.writeHead(200, { "Content-type": "application/json" });
-  res.end(JSON.stringify(superHero));
+  res.writeHead(200, { "Content-type": "text/html" });
+  // const html = fs.readFileSync("./index.html", "utf-8");
+  fs.createReadStream(__dirname + "/index.html").pipe(res);
+  // res.end(html);
 });
 
 server.listen(3000, () => {
