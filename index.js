@@ -1,11 +1,21 @@
 // ************* Thread pool with crypto ***************
+// const crypto = require("node:crypto");
+
+// const start = Date.now();
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// console.log("Hash:", Date.now() - start);
 const crypto = require("node:crypto");
 
+const MAX_CALLS = 3;
+
 const start = Date.now();
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-console.log("Hash:", Date.now() - start);
+for (let i = 0; i < MAX_CALLS; i++) {
+  crypto.pbkdf2("password", "salt", 100000, 512, "sha512", () => {
+    console.log("Hash : count", i + 1, Date.now() - start);
+  });
+}
 // ***********************************
 // ************* Thread pool ***************
 // const fs = require("node:fs");
